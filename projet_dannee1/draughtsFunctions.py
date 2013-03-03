@@ -10,6 +10,7 @@ Matricule : 000364845
 
 from config import *
 from math import *
+import pdb
 
 def caseNoire(row,col):
 	"""Retourne True si la case d'indice row,col est une case noire.
@@ -591,8 +592,8 @@ def checkMove(board,rowIndex,colIndex,direction,player,length=1,hasPlayed=False,
 			errCode=checkOpponentPiece(board,rowIndex,colIndex,player)
 			if(errCode==NO_ERROR):
 				destI,destJ,dirI,dirJ,player,length=findDest(board,rowIndex,colIndex,direction,length)
-				print("(rowIndex,colIndex) "+str((rowIndex,colIndex)))
-				print("findDest "+str(findDest(board,rowIndex,colIndex,direction,length)))
+				#print("(rowIndex,colIndex) "+str((rowIndex,colIndex)))
+				#print("findDest "+str(findDest(board,rowIndex,colIndex,direction,length)))
 				capt=findCapture(board,rowIndex,colIndex,length,dirI,dirJ,player)		
 				errCode=checkCannotGoJumpOutside(board,destI,destJ,length,rowIndex,colIndex,dirI,dirJ,player)
 				if (errCode==NO_ERROR):
@@ -607,7 +608,6 @@ def checkMove(board,rowIndex,colIndex,direction,player,length=1,hasPlayed=False,
 									errCode=checkSpaceOccupied(board,destI,destJ,rowIndex,colIndex,length,dirI,dirJ,player,capt)
 									if(errCode==NO_ERROR):
 										errCode=checkTooLongJump(board,rowIndex,colIndex,length,dirI,dirJ,player,capt)
-
 										if(errCode==NO_ERROR):
 											errCode=checkNoFreeWay(board,rowIndex,colIndex,destI,destJ,length,dirI,dirJ,player,capt)
 	return(errCode)
@@ -662,15 +662,15 @@ def cannotMove(board,player):
 						check=checkMove(board,row,col,direction,\
 						player)
 						if(check==NO_ERROR):
-							print(row)
-							print(col)
-							print(direction)
+							#print(row)
+							#print(col)
+							#print(direction)
 							return(False)
 
 	return res
 
 
-def checkEndOfGame(board,player):
+def checkEndOfGame1(board,player):
 	printBoard(board,player)
 	moves		= {WHITE_PLAYER:False,	BLACK_PLAYER:False}
 	pieces	= {WHITE_PLAYER:0,		BLACK_PLAYER:0}
@@ -697,7 +697,7 @@ def isFree(board,row,col):
 def playerColor(value):
 	return value/abs(value);
 
-def checkEndOfGame1(board,player):
+def checkEndOfGame(board,player):
 	"""Verifie si un pion peut se deplacer vers la gauche ou la droite
 		
 		Arguments:
@@ -714,7 +714,7 @@ def checkEndOfGame1(board,player):
 
 		"""
 	
-	printBoard(board,player)
+	#printBoard(board,player)
 
 	if (not(noMorePawn(board,player))):#"""si j'ai des pions"""
 		print("j'ai encore des pions")

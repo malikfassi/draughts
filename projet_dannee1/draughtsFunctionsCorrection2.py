@@ -183,17 +183,17 @@ def printBoard(myboard,toplay):
 
 def strerr(errCode):
 	return ({
-		PAWN_ONLY_ONE_MOVE	: 'only king can play more than 1 move',
-		BAD_DIRECTION_FORMAT	: 'error only L,R,LB and RB',
-		ONLY_KING_GO_BACK		: 'only king can go back',
-		SPACE_OCCUPIED			: 'one of your pieces is in this direction',
-		CANNOT_JUMP_OUTSIDE	: 'you cannot jump outside',
-		TOO_LONG_JUMP			: 'you cannot jump here, too long jump',
-		CANNOT_GO_OUTSIDE		: 'you cannot go outside',
-		NO_FREE_WAY				: 'the path is not free',
-		NO_PIECE					: 'invalid position',
-		OPPONENT_PIECE			: 'this is not your piece',
-		MUST_CAPTURE			: 'you must capture a piece if you want to continue your rafle'
+		PAWN_ONLY_ONE_MOVE	: 'Only king can play more than 1 move',
+		BAD_DIRECTION_FORMAT	: 'Error only L,R,LB and RB',
+		ONLY_KING_GO_BACK		: 'Only king can go back',
+		SPACE_OCCUPIED			: 'One of your pieces is in this direction',
+		CANNOT_JUMP_OUTSIDE	: 'You cannot jump outside',
+		TOO_LONG_JUMP			: 'You cannot jump here, too long jump',
+		CANNOT_GO_OUTSIDE		: 'You cannot go outside',
+		NO_FREE_WAY				: 'The path is not free',
+		NO_PIECE					: 'Invalid position',
+		OPPONENT_PIECE			: 'This is not your piece',
+		MUST_CAPTURE			: 'You must capture a piece if you want to continue your rafle'
 	}[errCode])
 
 def outside(board,row,col):
@@ -207,6 +207,26 @@ def playerColor(value):
 
 def isOpponent(myValue,value):
 	return (playerColor(myValue) * playerColor(value)) < 0
+
+def caseNoire(row,col):
+	"""Retourne True si la case d'indice row,col est une case noire.
+		Arguments:
+
+		row (int) : indice de la ligne qui se trouve dans le plateau
+		col (int) : indice de la colonne qui se trouve dans le plateau
+
+		Valeurs de retour:
+
+		bool. Retourne True si la case d'indice row,col est une case noire.
+		
+		Exemples:
+		>>> print(caseNoire(0,0))
+		False
+		>>> print(caseNoire(0,1))
+		True
+	"""
+	return(not(row%2==col%2))
+
 
 def save(filename,myboard,player):
 	dimension = len(myboard)

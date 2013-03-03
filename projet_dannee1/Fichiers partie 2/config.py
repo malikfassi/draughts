@@ -2,9 +2,9 @@
 # -*- coding: utf8 -*-
 
 # uncomment the following lines if you have a problem of characters
-import sys,codecs
-if(sys.stdout.encoding != 'UTF-8'):
-	sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+#import sys,codecs
+#if(sys.stdout.encoding != 'UTF-8'):
+#	sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
 
 # Part 1
 DIMENSION=10
